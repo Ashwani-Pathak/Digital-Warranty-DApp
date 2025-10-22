@@ -34,7 +34,7 @@ License: MIT
 
 🚀 Getting Started
 1. Clone the Repository
-git clone https://github.com/your-username/certificate-verification-system.git
+git clone https://github.com/Ashwani-Pathak/VerifyCert.git
 cd certificate-verification-system
 
 2. Compile the Contract

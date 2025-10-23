@@ -1,71 +1,67 @@
-🧾 Certificate Verification System (Solidity)
-📌 Overview
+## 🧾 **Project 2 – VerifyCert (Certificate Verification System)**
 
-The Certificate Verification System is a decentralized smart contract built on Ethereum that enables trusted organizations to issue and verify digital certificates on-chain. Each certificate is uniquely identified by a hash and permanently stored on the blockchain, ensuring authenticity and preventing forgery.
+```markdown
+# 🧾 VerifyCert: Blockchain-Based Certificate Verification System
 
-⚙️ Features
+## 📘 Overview
+**VerifyCert** is a decentralized application that allows institutions to issue and verify certificates on the blockchain. Each certificate is identified by a unique hash and recorded immutably, ensuring authenticity and preventing forgery.
 
-Issue Certificates: Only the authorized issuer can create and store new certificates.
+---
 
-Verify Certificates: Anyone can verify a certificate using its unique hash.
+## 🎯 Vision
+To eliminate fake certifications and create a **global standard for digital credential verification** using blockchain technology.
 
-Revoke Certificates (optional): Issuers can revoke certificates if needed.
+---
 
-Tamper-Proof: All records are stored immutably on the blockchain.
+## ⚙️ Features
+- **Certificate Issuance:** Authorized institutions can issue verifiable certificates.  
+- **Certificate Verification:** Anyone can verify a certificate using its unique hash.  
+- **Certificate Revocation:** Admin can revoke invalid or outdated certificates.  
+- **Immutable Records:** All data is securely stored on the blockchain.
 
-Gas Efficient: Uses optimized mappings for minimal cost.
+---
 
-🧩 Smart Contract Structure
-Component	Description
-struct Certificate	Holds details like recipient, course name, and issuance date.
-mapping(bytes32 => Certificate)	Maps each certificate hash to its record.
-issueCertificate()	Function to issue and store a new certificate.
-verifyCertificate()	Function to check if a certificate exists and is valid.
-revokeCertificate() (optional)	Function to revoke a certificate.
+## 🧩 Smart Contract Details
+| Element | Description |
+|----------|-------------|
+| **Contract Name** | `CertificateVerification` |
+| **Compiler Version** | `^0.8.20` |
+| **Core Functions** | `issueCertificate()`, `verifyCertificate()`, `revokeCertificate()` |
+
+---
+
+## 💻 Example Solidity Base Code
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract CertificateVerification {
+    // Contract will handle certificate issuance and verification
+}
 🧠 Tech Stack
-
 Language: Solidity
 
-Frameworks/Tools: Hardhat / Remix / Foundry (any)
+Tools: Remix IDE, MetaMask
 
-Network: Ethereum / Core / Polygon (testnet recommended)
+Network: Core Testnet
 
-License: MIT
+Version Control: GitHub
 
-🚀 Getting Started
-1. Clone the Repository
-git clone https://github.com/Ashwani-Pathak/VerifyCert.git
-cd certificate-verification-system
+🌐 Deployment Details
+Network: Core Testnet
 
-2. Compile the Contract
-npx hardhat compile
+Deployed Contract Address: <YOUR_DEPLOYED_CONTRACT_ADDRESS>
 
-3. Deploy the Contract
-npx hardhat run scripts/deploy.js --network <network-name>
+Transaction Hash: <YOUR_TRANSACTION_HASH>
 
-4. Interact
+🖼️ Deployment Verification
+Attach screenshot of successful contract verification from the Core Blockchain Explorer:
 
-You can interact using:
+🚀 Future Scope
+NFT-based digital certificates with metadata.
 
-Hardhat console
+Multi-institution certificate registry.
 
-Remix IDE (load the contract and deploy directly)
+Frontend portal for on-chain verification.
 
-Web3.js or Ethers.js frontend (optional)
-
-🧪 Example Usage
-// Issuer issues certificate
-issueCertificate("John Doe", "Blockchain Fundamentals", "hash123");
-
-// Verify certificate
-verifyCertificate("hash123"); // returns true or certificate details
-
-🔒 Security Notes
-
-Restrict certificate issuance to the contract owner or authorized address.
-
-Always validate certificate hashes off-chain before submission.
-
-📄 License
-
-This project is licensed under the MIT License — feel free to modify and use it for educational or institutional purposes.
+Integration with decentralized identity (DID) standards.

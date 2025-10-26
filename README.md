@@ -41,7 +41,7 @@ contract CertificateVerification {
 🧠 Tech Stack
 Language: Solidity
 
-Tools: Remix IDE, MetaMask
+Tools: Remix IDE, Metamask wallet
 
 Network: Core Testnet
 

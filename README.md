@@ -1,67 +1,111 @@
-## 🧾 **Project 2 – VerifyCert (Certificate Verification System)**
+# 🧾 Digital Warranty DApp
 
-```markdown
-# 🧾 VerifyCert: Blockchain-Based Certificate Verification System
-
-## 📘 Overview
-**VerifyCert** is a decentralized application that allows institutions to issue and verify certificates on the blockchain. Each certificate is identified by a unique hash and recorded immutably, ensuring authenticity and preventing forgery.
+A blockchain-based decentralized application (DApp) that enables manufacturers to issue and manage product warranties securely and transparently using smart contracts on the Ethereum network.
 
 ---
 
-## 🎯 Vision
-To eliminate fake certifications and create a **global standard for digital credential verification** using blockchain technology.
+## 📘 Table of Contents
+1. [Overview](#overview)
+2. [Objective](#objective)
+3. [Key Features](#key-features)
+4. [Smart Contract Structure](#smart-contract-structure)
+5. [Functions Overview](#functions-overview)
+6. [Deployment Details](#deployment-details)
+7. [Future Scope](#future-scope)
+8. [Repository Structure](#repository-structure)
+9. [Commit Summary](#commit-summary)
 
 ---
 
-## ⚙️ Features
-- **Certificate Issuance:** Authorized institutions can issue verifiable certificates.  
-- **Certificate Verification:** Anyone can verify a certificate using its unique hash.  
-- **Certificate Revocation:** Admin can revoke invalid or outdated certificates.  
-- **Immutable Records:** All data is securely stored on the blockchain.
+## 🧠 Overview
+
+**Digital Warranty DApp** leverages blockchain technology to eliminate fraudulent warranty claims and simplify product warranty management.  
+The system ensures transparency, immutability, and trust between manufacturers and consumers.
+
+Each warranty is uniquely linked to a buyer’s address and stored on-chain, preventing tampering or duplication.  
+Consumers can verify their warranty status anytime, while manufacturers can manage and track issued warranties efficiently.
 
 ---
 
-## 🧩 Smart Contract Details
-| Element | Description |
-|----------|-------------|
-| **Contract Name** | `CertificateVerification` |
-| **Compiler Version** | `^0.8.20` |
-| **Core Functions** | `issueCertificate()`, `verifyCertificate()`, `revokeCertificate()` |
+## 🎯 Objective
+
+To replace traditional paper-based and centralized warranty systems with a decentralized alternative that is:
+- Transparent  
+- Verifiable  
+- Tamper-proof  
+- Cost-efficient
 
 ---
 
-## 💻 Example Solidity Base Code
+## 🚀 Key Features
+
+- **Manufacturer-Based Access Control:** Only the manufacturer (contract owner) can issue warranties.  
+- **Unique Warranty ID Generation:** Each warranty is identified using a SHA3 (`keccak256`) hash.  
+- **On-Chain Storage:** Warranty details are stored on Ethereum for traceability.  
+- **Validity Verification:** Buyers can verify if their warranty is still active.  
+- **Event Emission:** Logs warranty registration and verification for transparency.
+
+---
+
+## 🧩 Smart Contract Structure
+
+**Contract Name:** `DigitalWarranty.sol`  
+**Language:** Solidity `^0.8.20`  
+**License:** MIT  
+
+### State Variables
+| Variable | Type | Description |
+|-----------|------|-------------|
+| `manufacturer` | `address` | Owner of the contract, allowed to issue warranties. |
+| `warranties` | `mapping(bytes32 => Warranty)` | Stores all warranty records using unique IDs. |
+
+### Struct Definition
 ```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
-
-contract CertificateVerification {
-    // Contract will handle certificate issuance and verification
+struct Warranty {
+    address buyer;
+    string productName;
+    uint256 issueDate;
+    uint256 expiryDate;
+    bool isClaimed;
 }
-🧠 Tech Stack
-Language: Solidity
+⚙️ Functions Overview
+Function	Visibility	Description
+constructor()	public	Sets contract deployer as manufacturer.
+registerWarranty(address _buyer, string memory _productName, uint256 _validityDays)	public onlyManufacturer	Registers a new warranty.
+verifyWarranty(bytes32 _warrantyId)	public view	Verifies if a warranty is valid and unclaimed.
 
-Tools: Remix IDE, Metamask wallet
+🧾 Events
+Event	Parameters	Description
+WarrantyRegistered(address buyer, string productName, uint256 expiryDate)	Buyer, Product Name, Expiry	Emitted on new warranty registration.
+WarrantyVerified(address buyer, string productName, bool isValid)	Buyer, Product Name, Status	Emitted when a warranty is checked.
 
-Network: Core Testnet
+📦 Deployment Details
+Network: Ethereum (Testnet recommended: Sepolia or Core Testnet)
 
-Version Control: GitHub
+Compiler Version: ^0.8.20
 
-🌐 Deployment Details
-Network: Core Testnet
+Framework: Hardhat / Remix IDE
 
-Deployed Contract Address: <YOUR_DEPLOYED_CONTRACT_ADDRESS>
+Contract Address: (To be added after deployment)
 
-Transaction Hash: <YOUR_TRANSACTION_HASH>
+Transaction Screenshot: (Attach post-deployment proof)
 
-🖼️ Deployment Verification
-Attach screenshot of successful contract verification from the Core Blockchain Explorer:
+🔮 Future Scope
+Warranty Claim and Renewal functionality
 
-🚀 Future Scope
-NFT-based digital certificates with metadata.
+NFT-based transferable warranties
 
-Multi-institution certificate registry.
+QR/NFC integration for on-device verification
 
-Frontend portal for on-chain verification.
+Multi-manufacturer support and analytics dashboard
 
-Integration with decentralized identity (DID) standards.
+Integration with supply chain systems
+
+📁 Repository Structure
+Copy code
+Digital-Warranty-DApp/
+│
+├── Contracts/
+│   └── DigitalWarranty.sol
+│
+└── README.md

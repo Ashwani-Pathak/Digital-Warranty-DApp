@@ -59,6 +59,11 @@ To replace traditional paper-based and centralized warranty systems with a decen
 | `manufacturer` | `address` | Owner of the contract, allowed to issue warranties. |
 | `warranties` | `mapping(bytes32 => Warranty)` | Stores all warranty records using unique IDs. |
 
+## Contract Details
+<img width="1919" height="1015" alt="image" src="https://github.com/user-attachments/assets/c0674257-e6f4-4d53-988b-02f502df51c9" />
+Contract Address-> 0xBe8D79d8d6De440d5c2708eB226f2C6C4c7923F9
+
+
 ### Struct Definition
 ```solidity
 struct Warranty {
@@ -108,4 +113,5 @@ Digital-Warranty-DApp/
 ├── Contracts/
 │   └── DigitalWarranty.sol
 │
+
 └── README.md
